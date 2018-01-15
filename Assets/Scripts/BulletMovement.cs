@@ -6,6 +6,10 @@ public class BulletMovement : MonoBehaviour {
 
     [SerializeField]
     float movementSpeed = 10;
+    [SerializeField]
+    float lifeSpan = 5;
+
+    float lifeTime = 0;
     // Use this for initialization
     void Start ()
     {
@@ -16,6 +20,7 @@ public class BulletMovement : MonoBehaviour {
 	void Update ()
     {
         transform.position += transform.up * movementSpeed * Time.deltaTime;
+        Destroy(gameObject, lifeSpan);
     }
 
     void OnTriggerEnter(Collider other)
