@@ -14,7 +14,7 @@ public class SceneTransit : MonoBehaviour {
 
     public void LevelSelect()
     {
-        SceneManager.LoadScene("Splash Screen");
+        SceneManager.LoadScene("Level Select");
     }
 
     public void Options()
@@ -29,6 +29,6 @@ public class SceneTransit : MonoBehaviour {
 
     public void LoadingScreen()
     {
-        SceneManager.LoadScene("Loading Screen");
+        SceneManager.LoadScene("Splash Screen");
     }
 }
