@@ -21,7 +21,7 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator SpawnEnemy(float waitTime)
     {
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 3; ++i)
         {
             yield return new WaitForSeconds(waitTime);
             Instantiate(enemy, transform.position, Quaternion.identity);

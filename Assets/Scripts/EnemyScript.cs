@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    //[SerializeField]
-    //float movementSpeed = 10;
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    float movementSpeed = 5;
+
+
+    public Transform target;
+    public Transform mytransform;
+
+    // Use this for initialization
+    void Start ()
     {
-		
+        target = GameObject.FindWithTag("Player").transform;
+        Debug.Log(target);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        transform.LookAt(target);
+        transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+    }
 
     void OnTriggerEnter(Collider other)
     {

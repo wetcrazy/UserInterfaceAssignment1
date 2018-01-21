@@ -76,4 +76,14 @@ public class PlayerMain : MonoBehaviour
     void FixedUpdate()
     {
     }
+
+    // Body contact when hp > 0 go game over
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Contains("Enemy"))
+        {
+            Health healthScript = GetComponent<Health>();
+            healthScript.AddHealth(-1f);
+        }
+    }
 }

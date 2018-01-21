@@ -7,11 +7,7 @@ public class PlayerFire : MonoBehaviour {
     [SerializeField]
     GameObject bullet;
 
-    [SerializeField]
-    float cooldown = 1.0f;
-
-    float elapsedtime = 0.0f;
-
+    float elapsedtime;
     bool isdown = false;
 
     // Use this for initialization
@@ -47,20 +43,18 @@ public class PlayerFire : MonoBehaviour {
             Instantiate(bullet, transform.position, transform.rotation);
         }*/
 
-       
-        // Only shoots
+        //Debug.Log(elapsedtime);
+        // Shooter on joystick down
         if (isdown)
         {
-            elapsedtime += cooldown * Time.deltaTime;
-            Debug.Log(elapsedtime);
-            if (elapsedtime <= 0)
-            {               
-                Instantiate(bullet, transform.position, transform.rotation);
-            }
-            else if (elapsedtime >= cooldown)
+            if (elapsedtime >= 0.5f)
             {
-                elapsedtime = 0.0f;           
-            }             
+                Instantiate(bullet, transform.position, transform.rotation);
+                elapsedtime = 0.0f;
+                //Debug.Log(elapsedtime);
+            }
+            else
+                elapsedtime += Time.deltaTime;
         }        
     }
 }
