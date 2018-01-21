@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoyScript : MonoBehaviour {
+public class JoyScriptShoot : MonoBehaviour
+{
 
     [SerializeField]
     GameObject joyObj;
@@ -18,13 +19,13 @@ public class JoyScript : MonoBehaviour {
     Vector3 startPosition;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         joyBG = joyObj.GetComponent<Image>();
         joyFG = joyBG.transform.GetChild(0).GetComponent<Image>();
+    }
 
-	}
-	
     public void StartPosition()
     {
         startPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
@@ -49,17 +50,17 @@ public class JoyScript : MonoBehaviour {
     {
         //joyFG.rectTransform.localPosition = new Vector3(0,0,1);
         joyFG.rectTransform.localPosition = Vector3.zero;
-        direction = Vector3.zero;
+        //direction = Vector3.zero;
     }
 
-	// Update is called once per frame
-	void Update ()
-    {		
-        if(Input.GetKeyUp(KeyCode.Escape))
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             if (Application.platform == RuntimePlatform.Android)
                 Application.Quit();
         }
 
-	}
+    }
 }

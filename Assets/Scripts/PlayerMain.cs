@@ -13,9 +13,13 @@ public class PlayerMain : MonoBehaviour
     [SerializeField]
     GameObject UIObj;
 
-    JoyScript targetScript;
+    [SerializeField]
+    GameObject UIObjShoot;
 
-    Vector3 yAxis;
+    JoyScript targetScript;
+    JoyScriptShoot targetScriptShoot;
+
+    //Vector3 yAxis;
 
     void Awake()
     {
@@ -25,8 +29,9 @@ public class PlayerMain : MonoBehaviour
 	void Start()
     {
         Debug.Log("Start");
-        yAxis = new Vector3(0, 1, 0);
+        //yAxis = new Vector3(0, 1, 0);
         targetScript = UIObj.GetComponent<JoyScript>();
+        targetScriptShoot = UIObjShoot.GetComponent<JoyScriptShoot>();
     }
 
     void Init()
@@ -37,28 +42,29 @@ public class PlayerMain : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || targetScript.direction.y > 0)
         {
             transform.position += transform.forward * movementSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || targetScript.direction.x < 0)
         {
             transform.position -= transform.right * movementSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || targetScript.direction.y < 0)
         {
             transform.position -= transform.forward * movementSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || targetScript.direction.x > 0)
         {
             transform.position += transform.right * movementSpeed * Time.deltaTime;
         }
 
-        Vector3 targetDir = targetScript.direction;
-        Debug.Log(targetDir);
+        // Rotation
+        Vector3 targetDir = targetScriptShoot.direction;
+        //Debug.Log(targetDir);
 
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, 
-                            new Vector3(targetDir.x, 0.0f, targetDir.y), 
+        Vector3 newDir = Vector3.RotateTowards(transform.forward,
+                            new Vector3(targetDir.x, 0.0f, targetDir.y),
                              Time.deltaTime * rotateSpeed, 0.0F);
 
 
