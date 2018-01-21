@@ -13,9 +13,13 @@ public class PlayerMain : MonoBehaviour
     [SerializeField]
     GameObject UIObj;
 
-    JoyScript targetScript;
+    [SerializeField]
+    GameObject UIObjShoot;
 
-    Vector3 yAxis;
+    JoyScript targetScript;
+    JoyScriptShoot targetScriptShoot;
+
+    //Vector3 yAxis;
 
     void Awake()
     {
@@ -25,8 +29,9 @@ public class PlayerMain : MonoBehaviour
 	void Start()
     {
         Debug.Log("Start");
-        yAxis = new Vector3(0, 1, 0);
+        //yAxis = new Vector3(0, 1, 0);
         targetScript = UIObj.GetComponent<JoyScript>();
+        targetScriptShoot = UIObjShoot.GetComponent<JoyScriptShoot>();
     }
 
     void Init()
@@ -53,18 +58,17 @@ public class PlayerMain : MonoBehaviour
         {
             transform.position += transform.right * movementSpeed * Time.deltaTime;
         }
-       
 
         // Rotation
-        //Vector3 targetDir = targetScript.direction;
+        Vector3 targetDir = targetScriptShoot.direction;
         //Debug.Log(targetDir);
 
-        //Vector3 newDir = Vector3.RotateTowards(transform.forward, 
-        //                    new Vector3(targetDir.x, 0.0f, targetDir.y), 
-        //                     Time.deltaTime * rotateSpeed, 0.0F);
+        Vector3 newDir = Vector3.RotateTowards(transform.forward,
+                            new Vector3(targetDir.x, 0.0f, targetDir.y),
+                             Time.deltaTime * rotateSpeed, 0.0F);
 
 
-        //transform.rotation = Quaternion.LookRotation(newDir);
+        transform.rotation = Quaternion.LookRotation(newDir);
 
 
     }

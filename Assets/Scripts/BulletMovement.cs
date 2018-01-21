@@ -9,7 +9,6 @@ public class BulletMovement : MonoBehaviour {
     [SerializeField]
     float lifeSpan = 5;
 
-    float lifeTime = 0;
     // Use this for initialization
     void Start ()
     {
@@ -31,6 +30,4 @@ public class BulletMovement : MonoBehaviour {
     {
        // Debug.Log(collision.gameObject.name);
     }
-
-    // GAY GYAYAYGAYYGAYA
 }
