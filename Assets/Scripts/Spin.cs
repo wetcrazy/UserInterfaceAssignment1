@@ -4,122 +4,58 @@ using System.Collections;
 public class Spin : MonoBehaviour
 {
 
-    public float glPlFltDeltaLimit;
-    public float glPlFltDeltaReduce;
-    public int glPlIntLapsBeforeStopping;
-    public bool glPlBoolCanRotate { get; set; }
-    public AudioClip glPlSpinSound;
-    private float glPrFltDeltaRotation;
-    private float glPrFltPreviousRotation;
-    private float glPrFltCurrentRotation;
-    private int glPrIntCurrentLaps;
-    private float glPrFloatRotation;
-    private float glPrFltQuarterRotation;
-    private bool boolCountRotations;
-
+    public float deltaRotation;
+    public float deltaLimit;
+    public float deltaReduce;
+    float previousRotation;
+    float currentRotation;
 
     void Start()
     {
-        glPrIntCurrentLaps = glPlIntLapsBeforeStopping;
-        glPrFloatRotation = 0f;
-        glPlBoolCanRotate = true;
-        boolCountRotations = true;
+       
     }
 
-    // Update is called once per frame
     void Update()
     {
-        RotateThis();
-        CountRotations();
-    }
-
-    private void CountRotations()
-    {
-        if (boolCountRotations)
-        {
-            if (Mathf.Sign(glPrFltDeltaRotation) == 1)
-            {
-                glPrFloatRotation += glPrFltDeltaRotation;
-            }
-
-            if (glPrFloatRotation >= 360)
-            {
-                glPrFloatRotation -= 360;
-                glPrIntCurrentLaps -= 1;
-                if (glPrIntCurrentLaps <= 0)
-                {
-                    glPlBoolCanRotate = false;
-                    StartCoroutine(EnableSpinForever(22));
-                }
-            }
+        if (!Input.GetMouseButtonDown(0))
+        {           
+            //deltaRotation = 0f;
+            previousRotation = angleBetweenPoints(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
-    }
-
-    private void RotateThis()
-    {
-        if (Input.GetMouseButtonDown(0) && glPlBoolCanRotate)
+        else if (!Input.GetMouseButton(0))
         {
-
-            // Get initial rotation of this game object
-            glPrFltDeltaRotation = 0f;
-            glPrFltPreviousRotation = angleBetweenPoints(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
-        else if (Input.GetMouseButton(0) && glPlBoolCanRotate)
-        {
-
-            // Rotate along the mouse under Delta Rotation Limit
-            glPrFltCurrentRotation = angleBetweenPoints(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            glPrFltDeltaRotation = Mathf.DeltaAngle(glPrFltCurrentRotation, glPrFltPreviousRotation);
-            if (Mathf.Abs(glPrFltDeltaRotation) > glPlFltDeltaLimit)
+            currentRotation = angleBetweenPoints(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            deltaRotation = Mathf.DeltaAngle(currentRotation, previousRotation);
+            if (Mathf.Abs(deltaRotation) > deltaLimit)
             {
-                glPrFltDeltaRotation = glPlFltDeltaLimit * Mathf.Sign(glPrFltDeltaRotation);
+                deltaRotation = deltaLimit * Mathf.Sign(deltaRotation);
             }
-            glPrFltPreviousRotation = glPrFltCurrentRotation;
-            transform.Rotate(Vector3.back * Time.deltaTime, glPrFltDeltaRotation);
+            previousRotation = currentRotation;
+            transform.Rotate(Vector3.back * Time.deltaTime, deltaRotation);
         }
         else
         {
-
-            // Inertia
-            transform.Rotate(Vector3.back * Time.deltaTime, glPrFltDeltaRotation);
-            glPrFltDeltaRotation = Mathf.Lerp(glPrFltDeltaRotation, 0, glPlFltDeltaReduce * Time.deltaTime);
+            transform.Rotate(Vector3.back * Time.deltaTime, deltaRotation);
+            deltaRotation = Mathf.Lerp(deltaRotation, 0, deltaReduce * Time.deltaTime);
         }
 
-      
     }
 
-    private float angleBetweenPoints(Vector2 v2Position1, Vector2 v2Position2)
+    float angleBetweenPoints(Vector2 position1, Vector2 position2)
     {
-        Vector2 v2FromLine = v2Position2 - v2Position1;
-        Vector2 v2ToLine = new Vector2(1, 0);
+        Vector2 fromLine = position2 - position1;
+        Vector2 toLine = new Vector2(1, 0);
 
-        float fltAngle = Vector2.Angle(v2FromLine, v2ToLine);
+        float angle = Vector2.Angle(fromLine, toLine);
 
-        // If rotation is more than 180
-        Vector3 v3Cross = Vector3.Cross(v2FromLine, v2ToLine);
-        if (v3Cross.z > 0)
+        Vector3 cross = Vector3.Cross(fromLine, toLine);
+
+        // did we wrap around?
+        if (cross.z > 0)
         {
-            fltAngle = 360f - fltAngle;
+            angle = 360f - angle;
         }
 
-        return fltAngle;
-    }
-
-    private IEnumerator EnableSpinForever(int intWaitSeconds)
-    {
-        yield return new WaitForSeconds(intWaitSeconds);
-        glPlBoolCanRotate = true;
-        boolCountRotations = false;
-    }
-
-    private void PlaySound()
-    {
-        glPrFltQuarterRotation += Mathf.Abs(glPrFltDeltaRotation);
-
-        if (glPrFltQuarterRotation >= 90)
-        {
-            glPrFltQuarterRotation -= 90;
-           
-        }
+        return angle;
     }
 }
