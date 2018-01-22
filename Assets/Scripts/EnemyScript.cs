@@ -7,14 +7,16 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     float movementSpeed = 5;
 
-
+    [SerializeField]
     public Transform target;
+
+    [SerializeField]
     public Transform mytransform;
 
     // Use this for initialization
     void Start ()
     {
-        target = GameObject.FindWithTag("Player").transform;
+        //target = GameObject.FindWithTag("Player").transform;
         Debug.Log(target);
 	}
 	

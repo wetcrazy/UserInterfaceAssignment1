@@ -70,7 +70,6 @@ public class PlayerMain : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(newDir);
 
-
     }
 
     void FixedUpdate()
@@ -82,7 +81,7 @@ public class PlayerMain : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Enemy"))
         {
-            Health healthScript = GetComponent<Health>();
+            PlayerHealth healthScript = GetComponent<PlayerHealth>();
             healthScript.AddHealth(-1f);
         }
     }

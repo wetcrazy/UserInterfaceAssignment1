@@ -31,4 +31,14 @@ public class SceneTransit : MonoBehaviour {
     {
         SceneManager.LoadScene("Splash Screen");
     }
+
+    public void Pause()
+    {
+        SceneManager.LoadScene("Pause");
+    }
+
+    public void Upgrades()
+    {
+        SceneManager.LoadScene("Upgrades");
+    }
 }
