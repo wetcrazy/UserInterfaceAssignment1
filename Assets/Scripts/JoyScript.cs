@@ -30,6 +30,7 @@ public class JoyScript : MonoBehaviour {
 #if UNITY_EDITOR || UNITY_WINDOWS
         startPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
 #elif UNITY_ANDROID
+        Touch mytouch = Input.GetTouch(0);
          startPosition = new Vector3(mytouch.position.x, mytouch.position.y, 1);
 #endif
     }
