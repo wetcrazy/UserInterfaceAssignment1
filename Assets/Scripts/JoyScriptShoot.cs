@@ -28,7 +28,11 @@ public class JoyScriptShoot : MonoBehaviour
 
     public void StartPosition()
     {
+#if UNITY_EDITOR || UNITY_WINDOWS
         startPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
+#elif UNITY_ANDROID
+         startPosition = new Vector3(mytouch.position.x, mytouch.position.y, 1);
+#endif
     }
     public void Dragging()
     {

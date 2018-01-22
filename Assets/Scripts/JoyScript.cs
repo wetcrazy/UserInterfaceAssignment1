@@ -27,7 +27,11 @@ public class JoyScript : MonoBehaviour {
 	
     public void StartPosition()
     {
+#if UNITY_EDITOR || UNITY_WINDOWS
         startPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
+#elif UNITY_ANDROID
+         startPosition = new Vector3(mytouch.position.x, mytouch.position.y, 1);
+#endif
     }
     public void Dragging()
     {
@@ -40,7 +44,7 @@ public class JoyScript : MonoBehaviour {
         Touch mytouch = Input.GetTouch(0);
         Vector3 newPosition = new Vector3(mytouch.position.x - startPosition.x, mytouch.position.y - startPosition.y, 1);
 
-#endif   
+#endif
         joyFG.rectTransform.localPosition = newPosition;
         direction = joyFG.rectTransform.localPosition;
 
