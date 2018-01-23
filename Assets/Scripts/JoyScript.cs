@@ -22,7 +22,6 @@ public class JoyScript : MonoBehaviour {
 	void Start () {
         joyBG = joyObj.GetComponent<Image>();
         joyFG = joyBG.transform.GetChild(0).GetComponent<Image>();
-
 	}
 	
     public void StartPosition()

@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  target: {fileID: 0}
+  target: {fileID: 4019458767598576, guid: 7919c3e7a123a9e44b2f4d873e0c34cf, type: 2}
   mytransform: {fileID: 4058155179645356}
