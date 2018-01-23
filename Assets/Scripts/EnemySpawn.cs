@@ -10,7 +10,7 @@ public class EnemySpawn : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-            StartCoroutine("SpawnEnemy", 2.0f);
+            StartCoroutine("SpawnEnemy", 5.0f);
     }
 
     // Update is called once per frame

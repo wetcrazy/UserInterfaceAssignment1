@@ -35,6 +35,7 @@ public class PlayerFire : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        elapsedtime += Time.deltaTime;
         // When mouse button is pressed
         /*
         if (Input.GetMouseButtonDown(0))
@@ -52,9 +53,8 @@ public class PlayerFire : MonoBehaviour {
                 Instantiate(bullet, transform.position, transform.rotation);
                 elapsedtime = 0.0f;
                 //Debug.Log(elapsedtime);
-            }
-            else
-                elapsedtime += Time.deltaTime;
+            }       
         }        
+
     }
 }
