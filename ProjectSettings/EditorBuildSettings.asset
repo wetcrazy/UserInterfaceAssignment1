@@ -12,23 +12,23 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 444f22d66efbf504ca3457f1d8b30933
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: d3ba748f0d4a4de46b519cf5a23e5296
-  - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: 86d1d1e0cb49f8340876bde2d74fa8ad
   - enabled: 1
     path: Assets/Scenes/Level Select.unity
     guid: e8a55474eb7aa1740acc55d3dc680d28
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 84d001c4017e18548ac8c82763634d75
-  - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 1083ba476f9b26a409abb1f6cbf84759
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 148590c7a575d9541826ad4af858da13
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 84d001c4017e18548ac8c82763634d75
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: d3ba748f0d4a4de46b519cf5a23e5296
   - enabled: 1
     path: Assets/Scenes/Pause.unity
     guid: 889033628780c8e409bdea6914475de3

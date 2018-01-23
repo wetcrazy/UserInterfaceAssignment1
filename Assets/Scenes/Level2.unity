@@ -155,7 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 0, g: 0.91764706, b: 1, a: 1}
+=======
+  m_Color: {r: 0, g: 1, b: 0.95686275, a: 1}
+>>>>>>> 7d478e4dbba3d221ad1a59f96ab86b7529f76cf4
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -230,7 +234,7 @@ Camera:
   m_GameObject: {fileID: 138162201}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -241,7 +245,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -304,8 +308,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 160, y: 60}
+=======
+  m_AnchoredPosition: {x: 0, y: 79}
+  m_SizeDelta: {x: 160, y: 30}
+>>>>>>> 7d478e4dbba3d221ad1a59f96ab86b7529f76cf4
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &257097095
 MonoBehaviour:
@@ -319,7 +328,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 0, g: 0.91764706, b: 1, a: 1}
+=======
+  m_Color: {r: 0, g: 1, b: 0.95686275, a: 1}
+>>>>>>> 7d478e4dbba3d221ad1a59f96ab86b7529f76cf4
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -328,11 +341,19 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: a1b311b085bf7df4b9ec02815e7cc272, type: 3}
+<<<<<<< HEAD
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
+=======
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+>>>>>>> 7d478e4dbba3d221ad1a59f96ab86b7529f76cf4
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -559,8 +580,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 550}
+=======
+  m_AnchoredPosition: {x: 0.000030518, y: 2}
+  m_SizeDelta: {x: 830, y: 575}
+>>>>>>> 7d478e4dbba3d221ad1a59f96ab86b7529f76cf4
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398617746
 MonoBehaviour:
