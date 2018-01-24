@@ -15,11 +15,17 @@ public class Spin : MonoBehaviour
        
     }
 
+    public void OnClick()
+    {
+        transform.Rotate(Vector3.back * Time.deltaTime, deltaRotation);
+        deltaRotation = Mathf.Lerp(deltaRotation, 0, deltaReduce * Time.deltaTime);
+    }
+
     void Update()
     {
 
         if (!Input.GetMouseButtonDown(0))
-        {           
+        {
             //deltaRotation = 0f;
             previousRotation = angleBetweenPoints(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }

@@ -7,8 +7,14 @@ public class PlayerFire : MonoBehaviour {
     [SerializeField]
     GameObject bullet;
 
+    [SerializeField]
+    GameObject bulletfast;
+
     float elapsedtime;
     bool isdown = false;
+
+    [SerializeField]
+    Rotater rotater;
 
     // Use this for initialization
     void Start () {
@@ -48,12 +54,17 @@ public class PlayerFire : MonoBehaviour {
         // Shooter on joystick down
         if (isdown)
         {
-            if (elapsedtime >= 0.5f)
-            {
+            if (elapsedtime >= 0.5f && !rotater.GetisRotation())
+            {                           
                 Instantiate(bullet, transform.position, transform.rotation);
                 elapsedtime = 0.0f;
                 //Debug.Log(elapsedtime);
-            }       
+            }     
+            else if(elapsedtime >= 0.1f && rotater.GetisRotation())
+            {
+                Instantiate(bulletfast, transform.position, transform.rotation);
+                elapsedtime = 0.0f;
+            }  
         }        
 
     }
